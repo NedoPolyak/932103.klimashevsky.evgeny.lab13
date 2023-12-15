@@ -1,0 +1,51 @@
+﻿@using lab13.Models
+@model QuestionViewModel
+
+﻿@{
+    Layout = null;
+}
+
+<div class="questionContainer">
+
+    <form method="post" id="quizForm" asp-action="QuestionProcess">
+        <div class="questionContainer-quest">
+
+            @{
+                string mathSignName = Model.MathSignName;
+                string mathSign = "";
+
+                switch (mathSignName)
+                {
+                    case "add":
+                        mathSign = "+";
+                        break;
+
+                    case "sub":
+                        mathSign = "-";
+                        break;
+
+                    case "mult":
+                        mathSign = "*";
+                        break;
+
+                    case "div":
+                        mathSign = "/";
+                        break;
+                }
+            }
+
+            <h1 class="question_value">@Model.FirstValue @mathSign @Model.SecondValue = </h1>                  
+
+            <div class="input-wrapper">
+                <input class="question_answerInput" type="number" name="UserAnswer" />
+            </div>
+
+            <input hidden name="FirstValue" value="@Model.FirstValue" />
+            <input hidden name="SecondValue" value="@Model.SecondValue" />
+            <input hidden name="MathSignName" value="@Model.MathSignName" />
+            <input hidden name="MathSignName" value="@Model.MathSignName" />
+            <input hidden id="btnPressed" name="BtnPressed" />
+        </div>
+    </form>
+
+</div>
